@@ -73,7 +73,9 @@ class PostController extends Controller
         $news = new Post;
         $news->body = $request->body;
         $news->user_id = Auth::user()->id;
-        $news->image = base64_encode(file_get_contents($request->file_name));
+        if( isset( $request->file_name )){
+          $news->image = base64_encode(file_get_contents($request->file_name));
+        }
         $news->save();
     //file_nameの保存
     //ローカル用
