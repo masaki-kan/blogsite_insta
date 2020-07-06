@@ -19,8 +19,12 @@
     </p>
     
     <!--画像があれば表示-->
-@if( $shows->file_name )
-<p class="img"><img src="/storage/post_image/{{ $shows->file_name }}"></p> 
+@if( $shows->image )
+<p class="img">
+    <img src="data:image/png;base64,{{ $shows->image }}"  />
+    <!--<img src="/storage/post_image/{{ $shows->file_name }}">-->
+    </p> 
+
 @else
 <p class="img"><img src="{{ asset('img/no_image.png') }}"></p>
 @endif

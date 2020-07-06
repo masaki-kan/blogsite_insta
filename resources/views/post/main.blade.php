@@ -34,8 +34,10 @@
     <a href="{{ route( 'show' , $all->id ) }}" class="img_content_a">  
     <div class="img_content">
     <!--投稿postの画像を表示-->
-    @if( $all->file_name )
-    <p class="img"><img src="/storage/post_image/{{ $all->file_name }}"></p> 
+    @if( $all->image )
+    <p class="img">
+        <img src="data:image/png;base64,{{ $all->image }}"  />
+        <!--<img src="/storage/post_image/{{ $all->file_name }}"></p> -->
     @else
     <!--そうでなければサンプル画像表示-->
     <p class="img"><img src="{{ asset('img/no_image.png') }}"></p>
