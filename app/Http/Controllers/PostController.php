@@ -40,6 +40,15 @@ class PostController extends Controller
         $valirules = Validator::make($request->all(),
         [ 
           'body' => 'required|max:140',
+          'image' => [
+                // 必須
+                //'required',
+                // アップロードされたファイルであること
+                'file',
+                // 画像ファイルであること
+                'image',
+                // MIMEタイプを指定
+                'mimes:jpeg,png,jpg'],
           'file_name' => [
                 // 必須
                 //'required',
@@ -67,18 +76,21 @@ class PostController extends Controller
         $post_form_userid = Auth::user()->id;
         $post_form['user_id'] = $post_form_userid;
         
+        $post_form_image = $request->file_name;
+        $post_form['image'] = base64_encode(file_get_contents($post_form_image));
+        
         unset($post_form['_token']);
         
+        /*
         if(isset($post_form['file_name'])){
             $image = $request->file('file_name');
-            /*
             $image_extension = $image->getClientOriginalExtension();
             $image_title = str_random(20);
             $image_file = $image_title . '.' . $image_extension;
             $post_form['file_name'] = $image_file;
-            $request->file('file_name')->storeAs('public/post_image', $image_file);*/
-            $post_form['image'] = base64_encode(file_get_contents($image));
-        }
+            $request->file('file_name')->storeAs('public/post_image', $image_file);
+        }*/
+        
         $news->fill($post_form)->save();
         return redirect()->route('index');
     }
