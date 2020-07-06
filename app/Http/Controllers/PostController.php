@@ -68,7 +68,7 @@ class PostController extends Controller
         $post_form['user_id'] = $post_form_userid;
         
         unset($post_form['_token']);
-        $post_form['image']= base64_encode(file_get_contents($request->photo));
+        $post_form['image']= base64_encode(file_get_contents($request->file_name));
         /**
         if(isset($post_form['file_name'])){
             $image = $request->file('file_name');
