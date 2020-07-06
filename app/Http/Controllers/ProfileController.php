@@ -44,7 +44,7 @@ class ProfileController extends Controller
         $user->password = bcrypt($request->user_password);
         
         if ($request->profile_photo !=null) {
-            $user->image = base64_encode(file_get_contents($request->profile_photo));
+            $user->photo = base64_encode(file_get_contents($request->profile_photo));
         }
         
         $user->save();
