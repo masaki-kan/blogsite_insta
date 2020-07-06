@@ -73,7 +73,8 @@
              <!--現在ログインしている場合、ログインユーザー画像があれば表示-->   
             @if( Auth::user()->profile_photo )
              <a href="{{ route('user', Auth::user()->id) }}">
-                 <img src="{{ asset('storage/profile/' . Auth::user()->profile_photo ) }}">
+                 <!--<img src="{{ asset('storage/profile/' . Auth::user()->profile_photo ) }}">-->
+                 <img src="data:image/png;base64,{{ Auth::user()->image }}"/>
                  </a></li> 
             @else
             <!--なければユーザーサンプル画像が表示-->
