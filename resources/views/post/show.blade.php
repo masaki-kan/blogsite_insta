@@ -81,8 +81,6 @@
     <p style="text-align:right;padding-right: 15px;">{{ $comments->created_at->format('h:m') }}</p>
     </div>
 
-    
-   
     </div>
     @endforeach
     @else
