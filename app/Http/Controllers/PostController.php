@@ -68,16 +68,16 @@ class PostController extends Controller
         $post_form['user_id'] = $post_form_userid;
         
         unset($post_form['_token']);
-        $post_form['image']= base64_encode(file_get_contents($request->file_name));
-        /**
+        
         if(isset($post_form['file_name'])){
-            $image = $request->file('file_name');
+            /*$image = $request->file('file_name');
             $image_extension = $image->getClientOriginalExtension();
             $image_title = str_random(20);
             $image_file = $image_title . '.' . $image_extension;
             $post_form['file_name'] = $image_file;
-            $request->file('file_name')->storeAs('public/post_image', $image_file);
-        }**/
+            $request->file('file_name')->storeAs('public/post_image', $image_file);*/
+            $post_form['image'] = base64_encode(file_get_contents($request->file_name));
+        }
         $news->fill($post_form)->save();
         return redirect()->route('index');
     }
