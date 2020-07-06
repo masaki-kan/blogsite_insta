@@ -1,0 +1,53 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Comment;
+use App\Post;
+use Illuminate\Support\Facades\Storage;
+use Validator;
+
+use Auth;
+
+class CommentController extends Controller
+{
+    //
+    //コメント画面表示
+    //Post投稿idから取得
+    public function show($post_id){
+        $shows = Post::find($post_id);
+        return view('post.show',['shows' => $shows]);
+    }
+    
+    //コメント追加処理
+    public function newcomment(Request $request){
+    //バリデーション設定
+        $valirules = Validator::make($request->all(),
+        [ 'comment' => 'required|max:140',
+        ],
+        [ 'comment.required' => '140文字以内で投稿内容を入力してください',
+        ]
+    );
+    //エラー設定
+    if( $valirules->fails() ){
+        return redirect()->back()->withErrors($valirules)->withInput();
+    }
+    //コメント処理の中身
+        $newcomments = new Comment;
+        $form = $request->all();
+        $form['user_id'] = Auth::user()->id;
+        unset($form['_token']);
+        
+        if( isset( $form['comment_image'] ) ){
+            $image = $request->file('comment_image');
+            $image_ext = $image->getClientOriginalExtension();
+            $text = str_random(20);
+            $imagedata = $text . '.' . $image_ext;
+            $form['comment_image'] = $imagedata;
+            $request->file('comment_image')->storeAs('public/comment_image' , $imagedata);
+        }
+        $newcomments->fill($form)->save();
+        return redirect()->back();
+    }
+}
