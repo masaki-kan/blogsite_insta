@@ -15,7 +15,7 @@ class AddImageToCommentsTable extends Migration
     {
         Schema::table('comments', function (Blueprint $table) {
             //
-            $table->longText('image')->nullable();
+            $table->longText('c_image')->nullable();
         });
     }
 

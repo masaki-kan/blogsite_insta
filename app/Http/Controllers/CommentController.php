@@ -37,7 +37,7 @@ class CommentController extends Controller
         $newcomments = new Comment;
         $newcomments->comment = $request->comment;
         $newcomments->user_id = Auth::user()->id;
-        $newcomments->image = base64_encode(file_get_contents($request->comment_image));
+        $newcomments->c_image = base64_encode(file_get_contents($request->comment_image));
         $newcomments->save();
         
         //ローカルの場合

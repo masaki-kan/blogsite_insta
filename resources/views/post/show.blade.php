@@ -71,11 +71,11 @@
     <p>{!! nl2br(e($comments->comment)) !!}</p>
     
     <!--コメント画像がセットされていたら表示-->
-          @isset($comments->image)
+          @isset($comments->c_image)
     <p class="comment_image">
-        <a href="/storage/comment_image/{{ $comments->image }}">
+        <a href="data:image/png;base64,{{ $comments->c_image }}">
             <!--<img src="/storage/comment_image/{{ $comments->comment_image }}">-->
-            <img src="data:image/png;base64,{{ $comments->image }}" />
+            <img src="data:image/png;base64,{{ $comments->c_image }}" />
         </a>
     </p>
            @endisset   
