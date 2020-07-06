@@ -71,10 +71,10 @@
             <li><a href="{{ route('search') }}"><img src="{{ asset('img/search.png') }}"></a></li>
             <li class="layouts_prof">
              <!--現在ログインしている場合、ログインユーザー画像があれば表示-->   
-            @if( Auth::user()->image )
+            @if( Auth::user()->photo )
              <a href="{{ route('user', Auth::user()->id) }}">
                  <!--<img src="{{ asset('storage/profile/' . Auth::user()->profile_photo ) }}">-->
-                 <img src="data:image/png;base64,{{ Auth::user()->image }}"/>
+                 <img src="data:image/png;base64,{{ Auth::user()->photo }}"/>
                  </a></li> 
             @else
             <!--なければユーザーサンプル画像が表示-->

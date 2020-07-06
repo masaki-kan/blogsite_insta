@@ -9,11 +9,11 @@
     <div class="post_title">
         
     <!--postモデルからリレーションしたユーザーの画像があれば表示--->
-    @if( $all->user->image )
+    @if( $all->user->photo )
         <p class="post_user">
          <a href="{{ route('user' , $all->user->id) }}">   
         <!--<img src="{{ asset('storage/profile/' . $all->user->profile_photo ) }}">-->
-        <img src="data:image/png;base64,{{ $all->user->image }}"  />
+        <img src="data:image/png;base64,{{ $all->user->photo }}"  />
         <!--<span>{{ $all->user->name }}</span>--></a></p>
     @else
     <!--なければサンプル画像-->

@@ -7,10 +7,10 @@
     
     <!--ユーザー画像表示-->
     <div class="prof_userimage">
-    @if( $user->image )
+    @if( $user->photo )
     <p>
         <!--<img src="{{ asset('storage/profile/' . $user->profile_photo ) }}">-->
-        <img src="data:image/png;base64,{{ $user->image }}"/>
+        <img src="data:image/png;base64,{{ $user->photo }}"/>
         </p>
     @else
     <!--ユーザー画像がなければサンプル画像-->
