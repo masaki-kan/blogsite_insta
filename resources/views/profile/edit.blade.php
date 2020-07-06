@@ -31,8 +31,11 @@
   <input type="password" name="password_confirmation" value="{{ old('password' , $user->password ) }}"/>
   
   <h3>画像</h3>
-  @if( $user->profile_photo )
-  <p id="from_img"><img src="{{ asset('storage/profile/' . $user->profile_photo) }}"></p>
+  @if( $user->image )
+  <p id="from_img">
+   <!--<img src="{{ asset('storage/profile/' . $user->profile_photo) }}">-->
+   <img src="data:image/png;base64,{{ $user->image }}"/>
+   </p>
   @else
   <p id="from_img"><img src="{{ asset('/img/user_img.png') }}" width="50px"></p>
   @endif

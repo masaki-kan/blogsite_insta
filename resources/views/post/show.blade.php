@@ -7,8 +7,11 @@
 <div class="post_show">
    <p>
        <!--ユーザー画像を表示-->
-        @if( $shows->user->profile_photo )
-   <img src="{{ asset('storage/profile/' . $shows->user->profile_photo ) }}" width="50px">
+        @if( $shows->user->image )
+   <!--<img src="{{ asset('storage/profile/' . $shows->user->profile_photo ) }}" width="50px">-->
+   <img src="data:image/png;base64,{{ $shows->user->image }}"  width="50px" />
+   
+   
     @else
     <!--そうでなければユーザーサンプル画像--->
     <img src="{{ asset('img/user_img.png') }}" width="50px">
@@ -47,8 +50,9 @@
      <div class="comments_user_icon">
             <p class="comments_prof">
                 <!--Comment, Userリレーション ユーザー画像があれば表示-->
-                @if( $comments->user->profile_photo )
-                <img src="{{ asset('storage/profile/' . $comments->user->profile_photo ) }}">
+                @if( $comments->user->image )
+                <!--<img src="{{ asset('storage/profile/' . $comments->user->profile_photo ) }}">-->
+                <img src="data:image/png;base64,{{ $comments->user->image }}"/>
                 @else
                 <!--なければサンプル画像表示-->
                 <img src="{{ asset('img/user_img.png') }}">
