@@ -35,6 +35,7 @@ class CommentController extends Controller
     }
     //コメント処理の中身
         $newcomments = new Comment;
+        $newcomments->post_id = $request->post_id;
         $newcomments->comment = $request->comment;
         $newcomments->user_id = Auth::user()->id;
         
