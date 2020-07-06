@@ -71,27 +71,25 @@ class PostController extends Controller
     
     //処理
         $news = new Post;
+        $news->body = $request->body;
+        $news->user_id = Auth::user()->id;
+        $news->image = base64_encode(file_get_contents($request->file_name));
+        $news->save();
     //file_nameの保存
-        $post_form = $request->all();
-        $post_form_userid = Auth::user()->id;
-        $post_form['user_id'] = $post_form_userid;
-        
-        $post_form_image = $request->file_name;
-        $post_form['image'] = base64_encode(file_get_contents($post_form_image));
-        
-        unset($post_form['_token']);
-        
-        /*
-        if(isset($post_form['file_name'])){
-            $image = $request->file('file_name');
-            $image_extension = $image->getClientOriginalExtension();
-            $image_title = str_random(20);
-            $image_file = $image_title . '.' . $image_extension;
-            $post_form['file_name'] = $image_file;
-            $request->file('file_name')->storeAs('public/post_image', $image_file);
-        }*/
-        
-        $news->fill($post_form)->save();
+    //ローカル用
+        //$post_form = $request->all();
+        //$post_form_userid = Auth::user()->id;
+        //$post_form['user_id'] = $post_form_userid;
+        //unset($post_form['_token']);
+        //if(isset($post_form['file_name'])){
+         //   $image = $request->file('file_name');
+         //   $image_extension = $image->getClientOriginalExtension();
+         //   $image_title = str_random(20);
+         //   $image_file = $image_title . '.' . $image_extension;
+         //   $post_form['file_name'] = $image_file;
+         //   $request->file('file_name')->storeAs('public/post_image', $image_file);
+       // }
+        //$news->fill($post_form)->save();
         return redirect()->route('index');
     }
     
