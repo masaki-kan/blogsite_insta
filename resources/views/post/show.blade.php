@@ -71,10 +71,11 @@
     <p>{!! nl2br(e($comments->comment)) !!}</p>
     
     <!--コメント画像がセットされていたら表示-->
-          @isset($comments->comment_image)
+          @isset($comments->image)
     <p class="comment_image">
-        <a href="/storage/comment_image/{{ $comments->comment_image }}">
-            <img src="/storage/comment_image/{{ $comments->comment_image }}">
+        <a href="/storage/comment_image/{{ $comments->image }}">
+            <!--<img src="/storage/comment_image/{{ $comments->comment_image }}">-->
+            <img src="data:image/png;base64,{{ $comments->image }}" />
         </a>
     </p>
            @endisset   
@@ -98,21 +99,19 @@
             <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"/>
        <div class="comment_textarea">
            
-       @if( $errors->has('comment') )
-       <p>{{ $errors->first('comment') }}</p>
-       @endif
+        @if( $errors->has('comment') )
+        <p>{{ $errors->first('comment') }}</p>
+        @endif
        
-       <p><input type="text" name="comment" rows="5" colw="10" class="comment_area" placeholder="コメント ..." value="{{ old('comment') }}"/>
+        <p><input type="text" name="comment" rows="5" colw="10" class="comment_area" placeholder="コメント ..." value="{{ old('comment') }}"/>
        </div>
         
         <div class="comment_image">
             
-        <label for="comment_image"><img src="{{ asset('img/camera_button.png') }}"></label>
-        <input type="file" name="comment_image" id="comment_image" value="{{ old('comment_image') }}"/>
-        <input type="submit" value="送信" class="button"/>
-        
+         <label for="comment_image"><img src="{{ asset('img/camera_button.png') }}"></label>
+         <input type="file" name="comment_image" id="comment_image" value="{{ old('comment_image') }}"/>
+         <input type="submit" value="送信" class="button"/>
         </div>
-
         </div>
         </form>
 

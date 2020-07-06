@@ -35,19 +35,25 @@ class CommentController extends Controller
     }
     //コメント処理の中身
         $newcomments = new Comment;
-        $form = $request->all();
-        $form['user_id'] = Auth::user()->id;
-        unset($form['_token']);
+        $newcomments->comment = $request->comment;
+        $newcomments->user_id = Auth::user()->id;
+        $newcomments->image = base64_encode(file_get_contents($request->comment_image));
+        $newcomments->save();
         
-        if( isset( $form['comment_image'] ) ){
-            $image = $request->file('comment_image');
-            $image_ext = $image->getClientOriginalExtension();
-            $text = str_random(20);
-            $imagedata = $text . '.' . $image_ext;
-            $form['comment_image'] = $imagedata;
-            $request->file('comment_image')->storeAs('public/comment_image' , $imagedata);
-        }
-        $newcomments->fill($form)->save();
+        //ローカルの場合
+        //$form = $request->all();
+        //$form['user_id'] = Auth::user()->id;
+        //unset($form['_token']);
+        //
+        //if( isset( $form['comment_image'] ) ){
+        //   $image = $request->file('comment_image');
+        //    $image_ext = $image->getClientOriginalExtension();
+        //   $text = str_random(20);
+        //    $imagedata = $text . '.' . $image_ext;
+        //    $form['comment_image'] = $imagedata;
+        //    $request->file('comment_image')->storeAs('public/comment_image' , $imagedata);
+        //}
+        //$newcomments->fill($form)->save();
         return redirect()->back();
     }
 }
