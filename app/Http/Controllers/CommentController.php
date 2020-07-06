@@ -39,7 +39,7 @@ class CommentController extends Controller
         $newcomments->comment = $request->comment;
         $newcomments->user_id = Auth::user()->id;
         
-        if( isset( $request->file_name )){
+        if( isset( $request->comment_image )){
           $newcomments->c_image = base64_encode(file_get_contents($request->comment_image));
         }
         
