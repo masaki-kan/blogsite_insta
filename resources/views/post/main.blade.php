@@ -72,7 +72,7 @@
         <!--コメントアイコン-->
             <img src="{{ asset('img/commnet_icon.png') }}">
             </a>{{ $all->comments->count() }}</span>
-    <!--<p class="post_content">{!! nl2br(e($all->body)) !!}</p>-->
+    <p class="post_content">{!! nl2br(e($all->body)) !!}</p>
     </div>
     
 </div>

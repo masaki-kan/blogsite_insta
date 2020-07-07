@@ -18,10 +18,11 @@
 <!--main.blade.phpと同じ-->
 <div class="posts">
     <div class="post_title">
-    @if( $all->user->profile_photo )
+    @if( $all->user->photo )
         <p class="post_user">
          <a href="{{ route('user' , $all->user->id) }}">   
-        <img src="{{ asset('storage/profile/' . $all->user->profile_photo ) }}">
+        <!--<img src="{{ asset('storage/profile/' . $all->user->profile_photo ) }}">-->
+        <img src="data:image/png;base64,{{ $all->user->photo }}"  />
         <!--<span>{{ $all->user->name }}</span>--></a></p>
     @else
     <p class="post_user"><img src="{{ asset('img/user_img.png') }}"><a href="{{ route('user' , $all->user->id) }}"><span>{{ $all->user->name }}</span></a></p>
@@ -36,8 +37,11 @@
 
     <a href="{{ route( 'show' , $all->id ) }}" class="img_content_a">  
     <div class="img_content">
-    @if( $all->file_name )
-    <p class="img"><img src="/storage/post_image/{{ $all->file_name }}"></p> 
+    @if( $all->image )
+    <p class="img">
+        <!--<img src="/storage/post_image/{{ $all->file_name }}">-->
+        <img src="data:image/png;base64,{{ $all->image }}"  /></p> 
+    
     @else
     <p class="img"><img src="{{ asset('img/no_image.png') }}"></p>
     @endif
