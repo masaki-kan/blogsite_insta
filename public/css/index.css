@@ -296,7 +296,6 @@ display: flex;
 }
 .prof_content #from_img img{
     width:200px;
-    border-radius: 50%;
     background:#fff;
 }
 .prof_content .prof_userimage{
@@ -370,6 +369,13 @@ footer .copy{
 }   
 footer .footer_nav{
   display:none;  
+}
+/**ログインボタンの位置**/
+.col-md-offset-4{
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    display: block;
 }
 }
 
@@ -668,7 +674,6 @@ footer .footer_nav{
 }
 .prof_content #from_img img{
     width:200px;
-    border-radius: 50%;
     background:#fff;
 }
 .prof_content .prof_userimage{
@@ -1051,7 +1056,6 @@ header{
 }
 .prof_content #from_img img{
     width:200px;
-    border-radius: 50%;
     background:#fff;
 }
 .prof_content .prof_userimage{
@@ -1164,5 +1168,8 @@ footer .footer_nav ul li a{
 }
 footer .footer_nav ul li a img{
     width: 50px;
+}
+#hed_fot_icon img{
+        border-radius: 50%;
 }
 }

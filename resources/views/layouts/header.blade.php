@@ -31,7 +31,7 @@
             <li><a href="{{ route('index') }}"><img src="{{ asset('img/home.png') }}" alt="{{ config('name' , 'SNS風ブログ') }}"></a></li>
             <li><a href="{{ route('newpage') }}"><img src="{{ asset('img/purus.png') }}"></a></li>
             <li><a href="{{ route('search') }}"><img src="{{ asset('img/search.png') }}"></a></li>
-            <li class="layouts_prof">
+            <li class="layouts_prof" id="hed_fot_icon">
              <!--現在ログインしている場合、ログインユーザー画像を表示-->
             @if( Auth::user()->photo )
              <a href="{{ route('user', Auth::user()->id) }}">
@@ -70,7 +70,7 @@
             <li><a href="{{ route('index') }}"><img src="{{ asset('img/home.png') }}" alt="{{ config('name' , 'SNS風ブログ') }}"></a></li>
             <li><a href="{{ route('newpage') }}"><img src="{{ asset('img/purus.png') }}"></a></li>
             <li><a href="{{ route('search') }}"><img src="{{ asset('img/search.png') }}"></a></li>
-            <li class="layouts_prof">
+            <li class="layouts_prof" id="hed_fot_icon">
              <!--現在ログインしている場合、ログインユーザー画像があれば表示-->   
             @if( Auth::user()->photo )
              <a href="{{ route('user', Auth::user()->id) }}">
