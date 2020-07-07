@@ -18,7 +18,8 @@
     @else
     <!--なければサンプル画像-->
     <p class="post_user"><img src="{{ asset('img/user_img.png') }}">
-    <!--ユーザー情報ページのリンク---><a href="{{ route('user' , $all->user->id) }}"><span>{{ $all->user->name }}</span></a></p>
+    <!--ユーザー情報ページのリンク---><a href="{{ route('user' , $all->user->id) }}">
+        <!--<span>{{ $all->user->name }}</span>--></a></p>
     @endif
     <!--更新日-->
     <p class="post_create"><span>{{ $all->created_at->format('Y.m.d') }}</span>
