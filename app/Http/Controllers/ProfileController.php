@@ -28,15 +28,15 @@ class ProfileController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required',
             'password' => 'required|string|min:6|confirmed',
-            'profile_photo' => [
+            //'profile_photo' => [
                   // 必須
                 //'required',
                 // アップロードされたファイルであること
-                'file',
+                //'file',
                 // 画像ファイルであること
-                'image',
+                //'image',
                 // MIMEタイプを指定
-                'mimes:jpeg,png,jpg'],
+                //'mimes:jpeg,png,jpg'],
             ]
             ,
             [

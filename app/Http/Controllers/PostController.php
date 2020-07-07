@@ -40,24 +40,24 @@ class PostController extends Controller
         $valirules = Validator::make($request->all(),
         [ 
           'body' => 'required|max:140',
-          'image' => [
+          //'image' => [
                 // 必須
                 //'required',
                 // アップロードされたファイルであること
-                'file',
+                //'file',
                 // 画像ファイルであること
-                'image',
+                //'image',
                 // MIMEタイプを指定
-                'mimes:jpeg,png,jpg'],
-          'file_name' => [
+                //'mimes:jpeg,png,jpg'],
+          //'file_name' => [
                 // 必須
                 //'required',
                 // アップロードされたファイルであること
-                'file',
+                //'file',
                 // 画像ファイルであること
-                'image',
+                //'image',
                 // MIMEタイプを指定
-                'mimes:jpeg,png,jpg']
+                //'mimes:jpeg,png,jpg']
         ],
         [ 
           'body.required' => '内容を１４０文字以内でを入力してください',
