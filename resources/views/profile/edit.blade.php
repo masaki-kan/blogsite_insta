@@ -17,6 +17,9 @@
   <h3>名前</h3>
   <input type="text" name="name" value="{{ old('name' , $user->name ) }}"/>
   
+   @if($errors->has('email'))
+  <p>{{ $errors->first('email') }}</p>
+  @endif
   <h3>メールアドレス</h3>
   <input type="text" name="email" value="{{ old('email' , $user->email ) }}"/>
   

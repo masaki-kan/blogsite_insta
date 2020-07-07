@@ -25,6 +25,15 @@ class CommentController extends Controller
     //バリデーション設定
         $valirules = Validator::make($request->all(),
         [ 'comment' => 'required|max:140',
+          'comment_image' => [
+                // 必須
+                //'required',
+                // アップロードされたファイルであること
+                'file',
+                // 画像ファイルであること
+                'image',
+                // MIMEタイプを指定
+                'mimes:jpeg,png,jpg'],
         ],
         [ 'comment.required' => '140文字以内で投稿内容を入力してください',
         ]
