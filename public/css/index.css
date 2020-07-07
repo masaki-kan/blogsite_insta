@@ -717,7 +717,7 @@ footer .footer_nav{
 }
 .paginate{
     clear:both;
-    width:960px;
+    width:90%;
     margin:0 auto;
 }
 .search_form{
@@ -1100,8 +1100,8 @@ header{
 }
 .paginate{
     clear:both;
-    width:960px;
-    margin:0 auto;
+    width:100%;
+    margin:0;
 }
 
 .search_form{
