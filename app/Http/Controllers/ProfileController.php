@@ -31,10 +31,8 @@ class ProfileController extends Controller
             'photo' => [
                 // 必須
                 //'required',
-                //サイズ
-                'size|max:10240',
                 // アップロードされたファイルであること
-                'file',
+                'file' => 'max:10240', //10MB 
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
@@ -43,10 +41,8 @@ class ProfileController extends Controller
             'profile_photo' => [
                   // 必須
                 //'required',
-                //サイズ
-                'size|max:10240',
                 // アップロードされたファイルであること
-                'file',
+                'file' => 'max:10240', //10MB 
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定

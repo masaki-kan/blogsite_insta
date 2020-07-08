@@ -28,10 +28,8 @@ class CommentController extends Controller
           'c_image' => [
                 // 必須
                 //'required',
-                //サイズ
-                'size|max:10240',
                 // アップロードされたファイルであること
-                'file',
+                'file' => 'max:10240', //10MB 
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
@@ -40,10 +38,8 @@ class CommentController extends Controller
           'comment_image' => [
                 // 必須
                 //'required',
-                //サイズ
-                'size|max:10240',
                 // アップロードされたファイルであること
-                'file',
+                'file' => 'max:10240', //10MB 
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定

@@ -43,10 +43,8 @@ class PostController extends Controller
           'image' => [
                 // 必須
                 //'required',
-                //サイズ
-                'size|max:10240',
                 // アップロードされたファイルであること
-                'file',
+                'file' => 'max:10240', //10MB 
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
@@ -55,10 +53,8 @@ class PostController extends Controller
           'file_name' => [
                 // 必須
                 //'required',
-                //サイズ
-                'size|max:10240',
                 // アップロードされたファイルであること
-                'file',
+                'file' => 'max:10240', //10MB 
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
