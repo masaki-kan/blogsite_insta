@@ -17,7 +17,7 @@
 <body>
        
         <header>
-<?php echo phpinfo(); ?>
+
             <div class="nav_top">
              <!--ゲストの場合-->
             @guest
