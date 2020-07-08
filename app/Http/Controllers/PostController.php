@@ -44,7 +44,7 @@ class PostController extends Controller
                 // 必須
                 //'required',
                 //サイズ
-                'max:10240',
+                'size:10240',
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
@@ -56,18 +56,18 @@ class PostController extends Controller
                 // 必須
                 //'required',
                 //サイズ
-                'max:10240',
+                'size:10240',
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
                 'mimes:jpeg,png,jpg,heic,heif,HEIC,JPG,JPEG,PNG,HEIF'
-                ]
+                ],
         ],
         [ 
           'body.required' => '内容を１４０文字以内でを入力してください',
-          'file_name.file' => 'アップロード画像（jpeg,png,jpg）のみです',
+          'file_name.file' => 'アップロード画像のみです',
         ]
     );
     //エラー表示

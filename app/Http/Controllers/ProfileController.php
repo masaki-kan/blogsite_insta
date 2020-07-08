@@ -32,7 +32,7 @@ class ProfileController extends Controller
                 // 必須
                 //'required',
                 //サイズ
-                'max:10240',
+                'size:10240',
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
@@ -44,7 +44,7 @@ class ProfileController extends Controller
                   // 必須
                 //'required',
                 //サイズ
-                'max:10240',
+                'size:10240',
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
