@@ -31,9 +31,9 @@ class CommentController extends Controller
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
-                //'image',
+                'image',
                 // MIMEタイプを指定
-                //'mimes:jpeg,png,jpg'
+                'mimes:jpeg,png,jpg,heic,HEIC,JPG,JPEG,PNG'
                 ],
         ],
         [ 'comment.required' => '140文字以内で投稿内容を入力してください',

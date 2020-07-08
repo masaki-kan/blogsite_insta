@@ -46,9 +46,9 @@ class PostController extends Controller
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
-                //'image',
+                'image',
                 // MIMEタイプを指定
-                //'mimes:jpeg,png,jpg'
+                'mimes:jpeg,png,jpg,heic,HEIC,JPG,JPEG,PNG'
                 ],
           'file_name' => [
                 // 必須
@@ -56,9 +56,9 @@ class PostController extends Controller
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
-                //'image',
+                'image',
                 // MIMEタイプを指定
-                //'mimes:jpeg,png,jpg'
+                'mimes:jpeg,png,jpg,heic,HEIC,JPG,JPEG,PNG'
                 ]
         ],
         [ 
