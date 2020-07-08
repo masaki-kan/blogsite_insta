@@ -46,7 +46,7 @@ class PostController extends Controller
                 // アップロードされたファイルであること
                 'file',
                 //サイズ
-                'max:10240', //10MB 
+                'size|max:10240', //10MB 
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
@@ -58,7 +58,7 @@ class PostController extends Controller
                 // アップロードされたファイルであること
                 'file',
                 //サイズ
-                'max:10240', //10MB 
+                'size|max:10240', //10MB 
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
