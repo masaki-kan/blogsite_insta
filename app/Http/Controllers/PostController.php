@@ -43,6 +43,8 @@ class PostController extends Controller
           'image' => [
                 // 必須
                 //'required',
+                //サイズ
+                'max:10240',
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
@@ -53,6 +55,8 @@ class PostController extends Controller
           'file_name' => [
                 // 必須
                 //'required',
+                //サイズ
+                'max:10240',
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること

@@ -31,6 +31,8 @@ class ProfileController extends Controller
             'photo' => [
                 // 必須
                 //'required',
+                //サイズ
+                'max:10240',
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
@@ -41,6 +43,8 @@ class ProfileController extends Controller
             'profile_photo' => [
                   // 必須
                 //'required',
+                //サイズ
+                'max:10240',
                 // アップロードされたファイルであること
                 'file',
                 // 画像ファイルであること
