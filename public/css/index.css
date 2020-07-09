@@ -1011,7 +1011,7 @@ header{
 }
 
 .comment_box #hosoku{
-    text-align:center;
+    text-align:center!important;
 }
 
 .newpost{
