@@ -1170,7 +1170,6 @@ footer .footer_nav ul li a img{
     width: 50px;
 }
 footer .footer_nav ul li:last-child{
-    padding:0!important;
 }
 footer .footer_nav ul li:last-child a img{
     width:100%;
