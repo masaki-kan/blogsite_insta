@@ -40,18 +40,6 @@ class PostController extends Controller
         $valirules = Validator::make($request->all(),
         [ 
           'body' => 'required|max:140',
-          'image' => [
-                // 必須
-                //'required',
-                // アップロードされたファイルであること
-                'file',
-                //サイズ
-                'max:10240',
-                // 画像ファイルであること
-                'image',
-                // MIMEタイプを指定
-                'mimes:jpeg,png,jpg,heic,heif,HEIC,JPG,JPEG,PNG,HEIF'
-                ],
           'file_name' => [
                 // 必須
                 //'required',
@@ -76,28 +64,25 @@ class PostController extends Controller
     }
     
     //処理
+    
         $news = new Post;
-        $news->body = $request->body;
-        $news->user_id = Auth::user()->id;
-        if( isset( $request->file_name )){
-          $news->image = base64_encode(file_get_contents($request->file_name));
-        }
-        $news->save();
+        $post_form = $request->all();
+        $post_form_userid = Auth::user()->id;
+        $post_form['user_id'] = $post_form_userid;
+        unset($post_form['_token']);
     //file_nameの保存
-    //ローカル用
-        //$post_form = $request->all();
-        //$post_form_userid = Auth::user()->id;
-        //$post_form['user_id'] = $post_form_userid;
-        //unset($post_form['_token']);
-        //if(isset($post_form['file_name'])){
-         //   $image = $request->file('file_name');
-         //   $image_extension = $image->getClientOriginalExtension();
-         //   $image_title = str_random(20);
-         //   $image_file = $image_title . '.' . $image_extension;
-         //   $post_form['file_name'] = $image_file;
-         //   $request->file('file_name')->storeAs('public/post_image', $image_file);
-       // }
-        //$news->fill($post_form)->save();
+    //storage保存
+        if(isset($post_form['file_name'])){
+            $image = $request->file('file_name');
+            $image_extension = $image->getClientOriginalExtension();
+            $image_title = str_random(20);
+            $image_file = $image_title . '.' . $image_extension;
+            $post_form['file_name'] = $image_file;
+            $image_to_DB = $request->file('file_name')->storeAs('public/post_image', $image_file);
+    //DB保存
+            Post::insert(['image' => $image_to_DB]);
+       }
+        $news->fill($post_form)->save();
         return redirect()->route('index');
     }
     

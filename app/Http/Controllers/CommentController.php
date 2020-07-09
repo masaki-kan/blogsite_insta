@@ -25,18 +25,6 @@ class CommentController extends Controller
     //バリデーション設定
         $valirules = Validator::make($request->all(),
         [ 'comment' => 'required|max:140',
-          'c_image' => [
-                // 必須
-                //'required',
-                // アップロードされたファイルであること
-                'file',
-                //サイズ
-                'max:10240',
-                // 画像ファイルであること
-                'image',
-                // MIMEタイプを指定
-                'mimes:jpeg,png,jpg,heic,heif,HEIC,JPG,JPEG,PNG,HEIF'
-                ],
           'comment_image' => [
                 // 必須
                 //'required',
@@ -47,7 +35,7 @@ class CommentController extends Controller
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
-                'mimes:jpeg,png,jpg,heic,heif,HEIC,JPG,JPEG,PNG,HEIF'
+                'mimes:jpeg,png,jpg,heic,gif,JPG,JPEG,PNG,HEIC,GIF'
                 ],
         ],
         [ 'comment.required' => '140文字以内で投稿内容を入力してください',

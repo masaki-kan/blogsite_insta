@@ -26,20 +26,8 @@ class ProfileController extends Controller
          //バリデーション設定（入力値チェック）
         $validator = Validator::make($request->all() , [
             'name' => 'required|string|max:255',
-            'email' => 'required',
+            'email' => 'email',
             'password' => 'required|string|min:6|confirmed',
-            'photo' => [
-                // 必須
-                //'required',
-                // アップロードされたファイルであること
-                'file',
-                //サイズ
-                'max:10240',
-                // 画像ファイルであること
-                'image',
-                // MIMEタイプを指定
-                'mimes:jpeg,png,jpg,heic,heif,HEIC,JPG,JPEG,PNG,HEIF'
-                ],
             'profile_photo' => [
                   // 必須
                 //'required',
@@ -50,13 +38,13 @@ class ProfileController extends Controller
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
-                'mimes:jpeg,png,jpg,heic,heif,HEIC,JPG,JPEG,PNG,HEIF'
+                'mimes:jpeg,png,jpg,heic,gif,JPG,JPEG,PNG,HEIC,GIF'
                 ],
             ]
             ,
             [
                 'name.required' => '名前を入力してください',
-                'email.required' => 'パスワードを入力してください',
+                'email.email' => 'パスワードを入力してください',
                 'password.required' => '6文字以上からお願いします',
             ]
                 );

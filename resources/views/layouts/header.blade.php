@@ -17,7 +17,9 @@
 <body>
        
         <header>
-
+         <!--php.iniファイルを見つける-->
+        <!--<?php echo phpinfo(); ?>--->
+        
             <div class="nav_top">
              <!--ゲストの場合-->
             @guest
