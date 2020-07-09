@@ -83,7 +83,7 @@ class PostController extends Controller
     //DB保存
        if( isset( $post_form['file_name'] ) ){
            $DB_image = $request->file_name;
-           $news->image = base64_encode(file_get_contents( $DB_image ));
+           $news->image = file_get_contents( $DB_image );
        }
         $news->fill($post_form)->save();
         return redirect()->route('index');
