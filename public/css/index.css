@@ -1169,10 +1169,13 @@ footer .footer_nav ul li a{
 footer .footer_nav ul li a img{
     width: 50px;
 }
+footer .footer_nav ul li:last-child{
+    padding:0!important;
+}
 #hed_fot_icon{
     padding:0;
 }
 #hed_fot_icon img{
-        border-radius: 50%;
+    border-radius: 50%;  
 }
 }
