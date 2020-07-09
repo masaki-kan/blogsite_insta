@@ -18,7 +18,7 @@
     　 @if( $errors->has('file_name') )
        <p>{{ $errors->first('file_name') }}</p>
        @endif
-       <p><label for="file_name">投稿画像</label><p>
+       <p><label for="file_name">画像<br>（2M以内のサイズ）</label><p>
        <p><input type="file" name="file_name" id="file_name" value="{{ old('file_name') }}"/><p>
            
        <p class="submit"><input type="submit" value="新規追加" class="button" /></p>

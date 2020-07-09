@@ -23,11 +23,7 @@
   <h3>メールアドレス</h3>
   <input type="text" name="email" value="{{ old('email' , $user->email ) }}"/>
   
-   @if($errors->has('password'))
-  <p>{{ $errors->first('password') }}</p>
-  @endif
-  
-  <h3>画像</h3>
+  <h3>画像<br>（2M以内のサイズ）</h3>
   @if( $user->photo )
   <p id="from_img">
    <!--<img src="{{ asset('storage/profile/' . $user->profile_photo) }}">-->
