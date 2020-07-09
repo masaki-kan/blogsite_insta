@@ -64,14 +64,14 @@ class PostController extends Controller
     }
     
     //処理
-    
+
         $news = new Post;
+    //file_nameの保存
+    //storage保存
         $post_form = $request->all();
         $post_form_userid = Auth::user()->id;
         $post_form['user_id'] = $post_form_userid;
         unset($post_form['_token']);
-    //file_nameの保存
-    //storage保存
         if(isset($post_form['file_name'])){
             $image = $request->file('file_name');
             $image_extension = $image->getClientOriginalExtension();
@@ -79,8 +79,11 @@ class PostController extends Controller
             $image_file = $image_title . '.' . $image_extension;
             $post_form['file_name'] = $image_file;
             $image_to_DB = $request->file('file_name')->storeAs('public/post_image', $image_file);
+       }
     //DB保存
-            Post::insert(['image' => $image_to_DB]);
+       if( isset( $post_form['file_name'] ) ){
+           $DB_image = $request->file_name;
+           $news->image = base64_encode(file_get_contents( $DB_image ));
        }
         $news->fill($post_form)->save();
         return redirect()->route('index');
