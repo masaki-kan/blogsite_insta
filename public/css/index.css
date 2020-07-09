@@ -231,8 +231,8 @@ display: block;
     padding-left: 55px;
 }
 .comment_box .comment_form{
-    display:flex;
-        margin: 10px 0;
+    display:block;
+    margin: 10px 0;
 }
 
 .comment_box .comment_form .comment_textarea{
@@ -633,6 +633,7 @@ footer .footer_nav{
     display:none;
 }
 
+
 .newpost #return{
     text-align: center;
     margin: 10px auto;
@@ -1008,6 +1009,11 @@ header{
 .comment_box .comment_form .comment_image #comment_image{
     display:none;
 }
+
+.comment_box #hosoku{
+    text-align:center;
+}
+
 .newpost{
     margin:30px 0;
 }

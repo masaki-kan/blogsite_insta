@@ -105,7 +105,7 @@
        
         <p><input type="text" name="comment" rows="5" colw="10" class="comment_area" placeholder="コメント ..." value="{{ old('comment') }}"/>
        </div>
-        <p>（画像サイズは2M以内）</p>
+        <p id="hosoku">（画像サイズは2M以内）</p>
         <div class="comment_image">
          <label for="comment_image"><img src="{{ asset('img/camera_button.png') }}"></label>
          <input type="file" name="comment_image" id="comment_image" value="{{ old('comment_image') }}"/>
