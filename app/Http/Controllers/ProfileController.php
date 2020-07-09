@@ -65,6 +65,7 @@ class ProfileController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         if ($request->profile_photo !=null) {
+        //storageへ保存
             $request->profile_photo->storeAs('public/profile', $user->id . '.jpg');
             $user->profile_photo = $user->id . '.jpg';
         }
