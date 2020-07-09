@@ -13,6 +13,12 @@ use Auth;
 class CommentController extends Controller
 {
     //
+    
+    //ログインしていなかったらログイン画面に
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     //コメント画面表示
     //Post投稿idから取得
     public function show($post_id){

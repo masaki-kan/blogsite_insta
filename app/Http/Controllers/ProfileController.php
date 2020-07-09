@@ -10,6 +10,11 @@ use Validator;
 class ProfileController extends Controller
 {
     //
+    
+    //ログインしていなかったらログイン画面に
+    public function __construct(){
+        $this->middleware('auth');
+    }
     //ユーザー情報画面
     public function index($user_id){
         $user = User::where('id' , $user_id)->firstOrFail();
