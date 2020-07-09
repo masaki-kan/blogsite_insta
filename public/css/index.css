@@ -686,6 +686,7 @@ footer .footer_nav{
     text-align: center;
 }
 .prof_content .prof_userimage p img{
+        width: 70%;
 }
 .prof_content .prof_data{
     width: 100%;
