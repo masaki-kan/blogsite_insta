@@ -50,7 +50,7 @@ class PostController extends Controller
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
-                'mimes:jpeg,png,jpg,heic,heif,HEIC,JPG,JPEG,PNG,HEIF'
+                'mimes:jpeg,JPEG,png,PNG,jpg,JPG,heic,HEIC,gif,GIF'
                 ],
         ],
         [ 
