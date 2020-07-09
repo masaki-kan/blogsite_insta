@@ -75,19 +75,17 @@ class PostController extends Controller
         unset($post_form['_token']);
         
         if(isset($post_form['file_name'])){
-    //storage保存
             $image = $request->file_name;
             $image_extension = $image->getClientOriginalExtension();
             $image_title = str_random(20);
             $image_file = $image_title . '.' . $image_extension;
             $post_form['file_name'] = $image_file;
-            $image_to_DB = $request->file('file_name')->storeAs('public/post_image', $image_file);
-      //DB保存
-      //POSTされた画像ファイルデータ取得しbase64でエンコードする          
-             $post_form['image'] = base64_encode(file_get_contents( $image ));
-            
+            $request->file('file_name')->storeAs('public/post_image', $image_file);
+    //DB保存
+    //POSTされた画像ファイルデータ取得しbase64でエンコードする
+           $post_form['image'] = base64_encode(file_get_contents( $image ));
        }
-       
+
         $news->fill($post_form)->save();
         return redirect()->route('index');
     }
