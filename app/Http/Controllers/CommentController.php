@@ -65,7 +65,7 @@ class CommentController extends Controller
     //DB保存
     //POSTされた画像ファイルデータ取得しbase64でエンコードする
        if( isset( $post_form['comment_image'] ) ){
-           $DB_image = $request->file_name;
+           $DB_image = $request->comment_image;
            $newcomments->c_image = base64_encode(file_get_contents( $DB_image ));
        }
         $newcomments->fill($form)->save();
