@@ -50,7 +50,7 @@ class PostController extends Controller
                 // 画像ファイルであること
                 'image',
                 // MIMEタイプを指定
-                'mimes:jpeg,JPEG,png,PNG,jpg,JPG,heic,HEIC,gif,GIF'
+                'mimes:jpeg,JPEG,png,PNG,jpg,JPG,heic,HEIC,heif,HEIF,gif,GIF'
                 ],
         ],
         [ 
@@ -67,24 +67,27 @@ class PostController extends Controller
 
         $news = new Post;
     //file_nameの保存
+    
     //upファイルをstorage保存
         $post_form = $request->all();
         $post_form_userid = Auth::user()->id;
         $post_form['user_id'] = $post_form_userid;
         unset($post_form['_token']);
+        
         if(isset($post_form['file_name'])){
+    //storage保存
             $image = $request->file_name;
             $image_extension = $image->getClientOriginalExtension();
             $image_title = str_random(20);
             $image_file = $image_title . '.' . $image_extension;
             $post_form['file_name'] = $image_file;
             $image_to_DB = $request->file('file_name')->storeAs('public/post_image', $image_file);
+      //DB保存
+      //POSTされた画像ファイルデータ取得しbase64でエンコードする          
+             $news->image = base64_encode(file_get_contents( $image ));
+            
        }
-    //DB保存
-       if( isset( $post_form['file_name'] ) ){
-           $DB_image = $request->file_name;
-           $news->image = file_get_contents( $DB_image );
-       }
+       
         $news->fill($post_form)->save();
         return redirect()->route('index');
     }

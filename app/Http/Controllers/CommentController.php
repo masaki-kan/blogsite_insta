@@ -57,20 +57,25 @@ class CommentController extends Controller
         
         $newcomments->save();
         
-        //ローカルの場合
-        //$form = $request->all();
-        //$form['user_id'] = Auth::user()->id;
-        //unset($form['_token']);
-        //
-        //if( isset( $form['comment_image'] ) ){
-        //   $image = $request->file('comment_image');
-        //    $image_ext = $image->getClientOriginalExtension();
-        //   $text = str_random(20);
-        //    $imagedata = $text . '.' . $image_ext;
-        //    $form['comment_image'] = $imagedata;
-        //    $request->file('comment_image')->storeAs('public/comment_image' , $imagedata);
-        //}
-        //$newcomments->fill($form)->save();
+        $form = $request->all();
+        $form['user_id'] = Auth::user()->id;
+        unset($form['_token']);
+
+        if( isset( $form['comment_image'] ) ){
+      //storage保存
+           $image = $request->comment_image;
+           $image_ext = $image->getClientOriginalExtension();
+           $text = str_random(20);
+           $imagedata = $text . '.' . $image_ext;
+           $form['comment_image'] = $imagedata;
+           $request->file('comment_image')->storeAs('public/comment_image' , $imagedata);
+            
+      //DB保存
+      //POSTされた画像ファイルデータ取得しbase64でエンコードする               
+           $form['c_image'] = base64_encode(file_get_contents($image)); 
+            
+        }
+        $newcomments->fill($form)->save();
         return redirect()->back();
     }
 }

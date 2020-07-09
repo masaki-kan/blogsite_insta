@@ -55,19 +55,23 @@ class ProfileController extends Controller
           return redirect()->back()->withErrors($validator->errors())->withInput();
         }
         //更新処理
+        
         $user = User::find($request->id);
-        $user->name = $request->name;
-        if ($request->profile_photo !=null) {
-            $request->profile_photo->storeAs('public/profile', $user->id . '.jpg');
-            $user->profile_photo = $user->id . '.jpg';
-        }
-        $user->password = bcrypt($request->user_password);
+        $userForm = $request->all();
+        unset( $userForm['_token'] );
         
-        if ($request->profile_photo !=null) {
-            $user->photo = base64_encode(file_get_contents($request->profile_photo));
+        if(isset( $userForm['profile_photo'] )){
+    　//storage保存   
+            $request->file('profile_photo')->storeAs('public/profile', $user->id . '.jpg');
+      //DB保存
+      //POSTされた画像ファイルデータ取得しbase64でエンコードする    
+            $profile_DB = $request->profile_photo;
+            $userForm['photo'] = base64_encode(file_get_contents($profile_DB));
         }
         
-        $user->save();
+        $userForm['password'] = bcrypt($request->user_password);
+        
+        $user->fill($userForm)->save();
         return redirect()->route('useredit', $request->id );
     }
 }
