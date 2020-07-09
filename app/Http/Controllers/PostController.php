@@ -67,13 +67,13 @@ class PostController extends Controller
 
         $news = new Post;
     //file_nameの保存
-    //storage保存
+    //upファイルをstorage保存
         $post_form = $request->all();
         $post_form_userid = Auth::user()->id;
         $post_form['user_id'] = $post_form_userid;
         unset($post_form['_token']);
         if(isset($post_form['file_name'])){
-            $image = $request->file('file_name');
+            $image = $request->file_name;
             $image_extension = $image->getClientOriginalExtension();
             $image_title = str_random(20);
             $image_file = $image_title . '.' . $image_extension;
