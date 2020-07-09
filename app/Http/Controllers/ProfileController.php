@@ -61,7 +61,7 @@ class ProfileController extends Controller
         unset( $userForm['_token'] );
         
         if(isset( $userForm['profile_photo'] )){
-    　//storage保存   
+      //storage保存    
             $request->file('profile_photo')->storeAs('public/profile', $user->id . '.jpg');
       //DB保存
       //POSTされた画像ファイルデータ取得しbase64でエンコードする    
