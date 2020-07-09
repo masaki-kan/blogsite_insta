@@ -27,12 +27,6 @@
   <p>{{ $errors->first('password') }}</p>
   @endif
   
-  <h3>パスワード</h3>
-  <input type="password" name="password" value="{{ old('password' , $user->password ) }}"/>
-  
-  <p>再度パスワード</p>
-  <input type="password" name="password_confirmation" value="{{ old('password' , $user->password ) }}"/>
-  
   <h3>画像</h3>
   @if( $user->photo )
   <p id="from_img">

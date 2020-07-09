@@ -27,7 +27,7 @@ class ProfileController extends Controller
         $validator = Validator::make($request->all() , [
             'name' => 'required|string|max:255',
             'email' => 'email',
-            'password' => 'required|string|min:6|confirmed',
+            //'password' => 'required|string|min:6|confirmed',
             'profile_photo' => [
                   // 必須
                 //'required',
@@ -45,7 +45,7 @@ class ProfileController extends Controller
             [
                 'name.required' => '名前を入力してください',
                 'email.email' => 'パスワードを入力してください',
-                'password.required' => '6文字以上からお願いします',
+                //'password.required' => '6文字以上からお願いします',
             ]
                 );
 
@@ -57,21 +57,18 @@ class ProfileController extends Controller
         //更新処理
         
         $user = User::find($request->id);
-        $userForm = $request->all();
-        unset( $userForm['_token'] );
-        if(isset( $userForm['profile_photo'] )){
-      //storage保存    
-            $request->file('profile_photo')->storeAs('public/profile', $user->id . '.jpg');
-            $userForm['profile_photo'] = $user->id . '.jpg';
-      //DB保存
-      //POSTされた画像ファイルデータ取得しbase64でエンコードする    
-            $profile_DB = $request->profile_photo;
-            $userForm['photo'] = base64_encode( file_get_contents($profile_DB) );
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->profile_photo !=null) {
+            $request->profile_photo->storeAs('public/profile', $user->id . '.jpg');
+            $user->profile_photo = $user->id . '.jpg';
         }
-        
-        $userForm['password'] = bcrypt($request->user_password);
-        
-        $user->fill($userForm)->save();
+      //DB保存
+      //POSTされた画像ファイルデータ取得しbase64でエンコードする  
+        if ($request->profile_photo !=null) {
+            $user->photo = base64_encode( file_get_contents($request->profile_photo) );
+        }
+        $user->save();
         return redirect()->route('useredit', $request->id );
     }
 }
