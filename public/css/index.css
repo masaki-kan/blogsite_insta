@@ -1173,8 +1173,10 @@ footer .footer_nav ul li a img{
 footer .footer_nav ul li:last-child{
 }
 footer .footer_nav ul li:last-child a img{
-    width: 80%;
+    width: 60px;
     height: 60px;
+    margin: 0 auto;
+    display: block;
     
 }
 
