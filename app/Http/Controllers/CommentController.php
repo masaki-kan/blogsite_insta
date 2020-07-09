@@ -47,7 +47,6 @@ class CommentController extends Controller
     }
     //コメント処理の中身
         $newcomments = new Comment;
-        
         $form = $request->all();
         $form['user_id'] = Auth::user()->id;
         unset($form['_token']);
@@ -64,7 +63,7 @@ class CommentController extends Controller
         }
     //DB保存
     //POSTされた画像ファイルデータ取得しbase64でエンコードする
-       if( isset( $post_form['comment_image'] ) ){
+       if( isset( $form['comment_image'] ) ){
            $DB_image = $request->comment_image;
            $newcomments->c_image = base64_encode(file_get_contents( $DB_image ));
        }
