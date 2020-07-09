@@ -32,7 +32,6 @@
     @endif
     </div>
 
-
     <a href="{{ route( 'show' , $all->id ) }}" class="img_content_a">  
     <div class="img_content">
     <!--投稿postの画像を表示-->

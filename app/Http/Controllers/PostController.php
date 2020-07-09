@@ -84,7 +84,7 @@ class PostController extends Controller
             $image_to_DB = $request->file('file_name')->storeAs('public/post_image', $image_file);
       //DB保存
       //POSTされた画像ファイルデータ取得しbase64でエンコードする          
-             $news->image = base64_encode(file_get_contents( $image ));
+             $post_form['image'] = base64_encode(file_get_contents( $image ));
             
        }
        
