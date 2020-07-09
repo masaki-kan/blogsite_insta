@@ -81,11 +81,14 @@ class PostController extends Controller
             $image_file = $image_title . '.' . $image_extension;
             $post_form['file_name'] = $image_file;
             $request->file('file_name')->storeAs('public/post_image', $image_file);
+            
+       }
     //DB保存
     //POSTされた画像ファイルデータ取得しbase64でエンコードする
-           $post_form['image'] = base64_encode(file_get_contents($image)); 
+       if( isset( $post_form['file_name'] ) ){
+           $DB_image = $request->file_name;
+           $news->image = base64_encode(file_get_contents( $DB_image ));
        }
-
         $news->fill($post_form)->save();
         return redirect()->route('index');
     }
