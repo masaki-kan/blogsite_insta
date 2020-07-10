@@ -1010,7 +1010,7 @@ header{
     display:none;
 }
 
-.comment_box #hosoku{
+#hosoku{
     text-align:center!important;
 }
 
@@ -1175,7 +1175,7 @@ footer .footer_nav ul li a{
     line-height: 1.3em;
 }
 footer .footer_nav ul li a img{
-    width: 50px;
+    width: 40px;
 }
 footer .footer_nav ul li:last-child{
 }
